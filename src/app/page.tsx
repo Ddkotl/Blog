@@ -1,14 +1,11 @@
-import { Button } from "@/shared/ui/button";
-import { PrismaClient } from "@prisma/client";
-
-const client = new PrismaClient();
+import { CreateNovelForm } from "@/features/novels-list/pub/create-novel-form";
+import { NovelsList } from "@/features/novels-list/pub/novels-list";
 
 export default async function Home() {
-  const novels = await client.novel.findMany();
-  console.log(novels);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Button>Button</Button>
+    <main className="flex min-h-screen flex-col p-8">
+      <CreateNovelForm revalidatePagePath="/" className="max-w-[300px] mb-10" />
+      <NovelsList revalidatePagePath="/" />
     </main>
   );
 }
