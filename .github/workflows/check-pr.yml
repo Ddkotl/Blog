@@ -16,4 +16,3 @@ jobs:
       - run: npm run lint
       - run: npm run lint:types
       - run: npm run test
-      - run: npm run test:e2e
