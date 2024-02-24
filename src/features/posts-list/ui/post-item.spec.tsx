@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { NovelItem } from "./novel-item";
+import { PostItem } from "./post-item";
 
-describe("novel item", () => {
+describe("post item", () => {
   it("should call delete callback", async () => {
     const onDelete = jest.fn();
     render(
-      <NovelItem
-        novel={{
+      <PostItem
+        post={{
           id: "aeaer",
           name: "aergsb",
           description: "dfbdb",

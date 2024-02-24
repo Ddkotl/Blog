@@ -1,14 +1,14 @@
-type NovelListElement = {
+type PostListElement = {
   id: string;
   name: string;
   description: string;
 };
 
-type CreateNovelListElementCommand = {
+type CreatePostListElementCommand = {
   name: string;
   description: string;
 };
 
-type DeleteNovelListElementCommand = {
+type DeletePostListElementCommand = {
   id: string;
 };
