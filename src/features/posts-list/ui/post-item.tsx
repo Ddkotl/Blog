@@ -9,11 +9,11 @@ import {
 } from "@/shared/ui/card";
 import { useTransition } from "react";
 
-export function NovelItem({
-  novel,
+export function PostItem({
+  post,
   onDelete,
 }: {
-  novel: NovelListElement;
+  post: PostListElement;
   onDelete: () => Promise<void>;
 }) {
   const [isLoadingDelete, startDeleteTransition] = useTransition();
@@ -25,8 +25,8 @@ export function NovelItem({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{novel.name}</CardTitle>
-        <CardDescription>{novel.description}</CardDescription>
+        <CardTitle>{post.name}</CardTitle>
+        <CardDescription>{post.description}</CardDescription>
       </CardHeader>
       <CardFooter>
         <Button disabled={isLoadingDelete} onClick={handleDelete}>

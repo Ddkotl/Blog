@@ -16,14 +16,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { createNovelAction } from "../actions";
+import { createPostAction } from "../actions";
 
-const createNovelFormSchema = z.object({
+const createPostFormSchema = z.object({
   name: z.string(),
   description: z.string(),
 });
 
-export function CreateNovelForm({
+export function CreatePostForm({
   className,
   revalidatePagePath,
 }: {
@@ -32,7 +32,7 @@ export function CreateNovelForm({
 }) {
   const [isCreateTransition, startCreateTransition] = useTransition();
   const form = useForm({
-    resolver: zodResolver(createNovelFormSchema),
+    resolver: zodResolver(createPostFormSchema),
     defaultValues: {
       name: "",
       description: "",
@@ -44,7 +44,7 @@ export function CreateNovelForm({
       <form
         onSubmit={form.handleSubmit((data) => {
           startCreateTransition(async () => {
-            createNovelAction(data, revalidatePagePath);
+            createPostAction(data, revalidatePagePath);
           });
         })}
         className={cn(className, "space-y-8")}
