@@ -1,7 +1,7 @@
 import { CreatePostForm } from "@/features/posts-list/pub/create-post-form";
 import { PostsList } from "@/features/posts-list/pub/posts-list";
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col p-8">
       <h1>Posts</h1>
