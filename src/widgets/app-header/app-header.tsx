@@ -3,12 +3,17 @@ import { Layout } from "./_ui/layout";
 import { Logo } from "./_ui/logo";
 import { MainNav } from "./_ui/main-nav";
 
-export function AppHeader() {
+export function AppHeader({
+  variant,
+}: {
+  variant: "auth" | "private" | "public";
+}) {
+  const isProfile = variant !== "auth";
   return (
     <Layout
       logo={<Logo />}
       nav={<MainNav />}
-      profile={<Logo />}
+      profile={isProfile && <Logo />}
       actions={<ToggleTheme />}
     />
   );
