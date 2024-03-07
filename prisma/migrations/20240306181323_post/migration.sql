@@ -1,8 +1,8 @@
 -- CreateTable
-CREATE TABLE "Novel" (
+CREATE TABLE "Post" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
 
-    CONSTRAINT "Novel_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );
