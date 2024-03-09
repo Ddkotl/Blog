@@ -16,8 +16,8 @@ export function LogoIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         fill="#B1CC33"
         stroke="#B1CC33"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="M48 32.685C42.95 18.25 33 10 29 10c0 3.61 9.5 18.5 9.5 18.5L46 36z"
       ></path>
       <circle cx="57" cy="28" r="1" fill="#fff"></circle>
@@ -25,9 +25,9 @@ export function LogoIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         fill="none"
         stroke="#000"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="M35.14 23S29 15 29 10c3.5 0 12.521 6.854 17.59 19"
       ></path>
     </svg>
