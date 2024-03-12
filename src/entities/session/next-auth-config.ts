@@ -4,7 +4,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compact } from "lodash-es";
 import { AuthOptions } from "next-auth";
 import Email from "next-auth/providers/email";
-
 import GithubProvider from "next-auth/providers/github";
 
 export const nextAuthConfig: AuthOptions = {
