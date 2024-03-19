@@ -8,6 +8,7 @@ export default async function Layout({
   return (
     <>
       <AppHeader variant="auth" />
+
       {children}
     </>
   );
