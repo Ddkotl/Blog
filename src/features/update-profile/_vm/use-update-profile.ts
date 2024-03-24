@@ -1,4 +1,4 @@
-import { useInvalidateProfile } from "@/entities/user/profile";
+import { useInvalidateProfile } from "@/entities/user/_queries";
 import { useAppSession } from "@/entities/user/session";
 import { useMutation } from "@tanstack/react-query";
 import { updateProfileAction } from "../_actions/update-profile";

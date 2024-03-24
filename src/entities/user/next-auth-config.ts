@@ -3,11 +3,12 @@ import { dbClient } from "@/shared/lib/db";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { compact } from "lodash-es";
 import { AuthOptions } from "next-auth";
-import Email from "next-auth/providers/email";
+import EmailProvider from "next-auth/providers/email";
 import GithubProvider from "next-auth/providers/github";
 import { createUserUseCase } from "./_use-cases/create-user";
 
 const prismaAdapter = PrismaAdapter(dbClient);
+
 const emailToken = privateConfig.TEST_EMAIL_TOKEN
   ? {
       generateVerificationToken: () => privateConfig.TEST_EMAIL_TOKEN ?? "",
@@ -41,7 +42,7 @@ export const nextAuthConfig: AuthOptions = {
     verifyRequest: "/auth/verify-request",
   },
   providers: compact([
-    Email({
+    EmailProvider({
       ...emailToken,
       server: {
         host: privateConfig.EMAIL_SERVER_HOST,
