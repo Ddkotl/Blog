@@ -11,6 +11,7 @@ export function useSignOut() {
       router.push("/auth/sign-in");
     },
   });
+
   return {
     signOut: mutation.mutateAsync,
     isPending: mutation.isPending,

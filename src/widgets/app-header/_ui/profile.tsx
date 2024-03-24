@@ -1,6 +1,5 @@
 "use client";
-
-import { getProfileDisplayName, ProfileAvatar } from "@/entities/user/profile";
+import { ProfileAvatar, getProfileDisplayName } from "@/entities/user/profile";
 import { useAppSession } from "@/entities/user/session";
 import { SignInButton } from "@/features/auth/sign-in-button";
 import { useSignOut } from "@/features/auth/use-sign-out";
@@ -25,11 +24,13 @@ export function Profile() {
   if (session.status === "loading") {
     return <Skeleton className="w-8 h-8 rounded-full" />;
   }
+
   if (session.status === "unauthenticated") {
     return <SignInButton />;
   }
 
   const user = session?.data?.user;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

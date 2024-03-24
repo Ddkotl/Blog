@@ -49,7 +49,7 @@ export function EmailSignInForm() {
           />
           <Button disabled={emailSignIn.isPending}>
             {emailSignIn.isPending && (
-              <Spinner className="mr-2 h-4 w-4 " aria-label="Загрузка" />
+              <Spinner className="mr-2 h-4 w-4 " aria-label="Загрузка выхода" />
             )}
             Войти через Email
           </Button>

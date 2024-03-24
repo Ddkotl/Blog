@@ -1,7 +1,6 @@
 import { SignInForm } from "@/features/auth/sign-in-form.server";
 import { Card, CardContent, CardHeader } from "@/shared/ui/card";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export default function AuthenticationPage() {
   return (
@@ -15,9 +14,7 @@ export default function AuthenticationPage() {
             </h1>
           </CardHeader>
           <CardContent className="grid gap-4">
-            <Suspense>
-              <SignInForm />
-            </Suspense>
+            <SignInForm />
             <p className="px-0 text-center text-sm text-muted-foreground">
               Нажимая продолжить вы соглашаетесь с{" "}
               <Link

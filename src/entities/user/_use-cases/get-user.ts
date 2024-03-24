@@ -9,12 +9,14 @@ type GetUser = {
 };
 
 export class GetUserUseCase {
-  async exec(data: GetUser): Promise<UserEntity> {
-    const userAbility = createUserAbility(data.session);
-    if (!userAbility.canGetUser(data.userId)) {
+  async exec({ userId, session }: GetUser): Promise<UserEntity> {
+    const userAbility = createUserAbility(session);
+
+    if (!userAbility.canGetUser(userId)) {
       throw new AuthorizationError();
     }
-    return await userRepository.getUserById(data.userId);
+
+    return await userRepository.getUserById(userId);
   }
 }
 

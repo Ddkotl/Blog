@@ -13,6 +13,7 @@ export const ProfileAvatar = ({
   if (!profile) {
     return null;
   }
+
   return (
     <Avatar className={cn(className)}>
       <AvatarImage src={profile.image ?? ""} className="object-cover" />

@@ -11,7 +11,7 @@ import { Input } from "@/shared/ui/input";
 import { Spinner } from "@/shared/ui/spinner";
 import { useForm } from "react-hook-form";
 import { generateTestLink } from "../_lib/generate-test-link";
-import { useTestEmailSignIn } from "../_vm/use-test-email-sing-in";
+import { useTestEmailSignIn } from "../_vm/use-test-email-sign-in";
 
 export function TestEmailSignInForm({ testToken }: { testToken: string }) {
   const form = useForm<{ email: string }>({

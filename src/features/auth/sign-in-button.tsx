@@ -9,8 +9,7 @@ export function SignInButton() {
 
   return (
     <Button variant={"outline"} onClick={handleSignOut}>
-      <LogIn className="mr-2 h-4 w-4" />
-      Войти
+      <LogIn className="mr-2 h-4 w-4" /> Войти
     </Button>
   );
 }
