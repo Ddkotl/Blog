@@ -1,6 +1,22 @@
 import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        "localhost:3000",
+        "staging.yourlife-online.ru",
+        "yourlife-online.ru",
+      ],
+    },
+  },
+  rewrites: () => [
+    {
+      source: "/storage/:path*",
+      destination: `${process.env.S3_ENDPOINT}/:path*`,
+    },
+  ],
+};
 
 export default withSentryConfig(
   nextConfig,
