@@ -7,7 +7,7 @@ type CreateUser = {
   email: string;
   name?: string | null;
   image?: string | null;
-  emailVerified: Date | null;
+  emailVerified?: Date | null;
 };
 
 export class CreateUserUseCase {
@@ -20,6 +20,7 @@ export class CreateUserUseCase {
       role,
       ...data,
     };
+
     return await userRepository.createUser(user);
   }
 }

@@ -9,8 +9,8 @@ export const ROLES: Record<Role, Role> = {
 export type UserEntity = {
   id: UserId;
   email: string;
+  role: Role;
   emailVerified?: Date | null;
-  role: Role | null;
   name?: string | null;
   image?: string | null;
 };
@@ -19,12 +19,14 @@ export type SessionEntity = {
   user: {
     id: UserId;
     email: string;
-    role: Role | null;
+    role: Role;
     name?: string | null;
     image?: string | null;
   };
   expires: string;
 };
+
+// Projetions
 
 export type Profile = {
   email: string;

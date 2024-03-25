@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod"
 
 const privateConfigSchema = z.object({
   ADMIN_EMAILS: z.string().optional(),

@@ -16,11 +16,14 @@ export const getUserProfileAction = async (
   props: z.infer<typeof propsSchema>,
 ) => {
   const { userId } = propsSchema.parse(props);
+
   const session = await getAppSessionStrictServer();
+
   const user = await getUserUseCase.exec({
     session,
     userId,
   });
+
   return resultSchema.parseAsync({
     profile: user,
   });

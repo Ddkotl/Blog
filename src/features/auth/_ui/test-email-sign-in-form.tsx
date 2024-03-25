@@ -10,16 +10,17 @@ import {
 import { Input } from "@/shared/ui/input";
 import { Spinner } from "@/shared/ui/spinner";
 import { useForm } from "react-hook-form";
-import { useEmailSignIn } from "../_vm/use-email-sign-in";
+import { generateTestLink } from "../_lib/generate-test-link";
+import { useTestEmailSignIn } from "../_vm/use-test-email-sign-in";
 
-export function EmailSignInForm() {
+export function TestEmailSignInForm({ testToken }: { testToken: string }) {
   const form = useForm<{ email: string }>({
     defaultValues: {
       email: "",
     },
   });
 
-  const emailSignIn = useEmailSignIn();
+  const emailSignIn = useTestEmailSignIn();
 
   return (
     <Form {...form}>
@@ -49,10 +50,25 @@ export function EmailSignInForm() {
           />
           <Button disabled={emailSignIn.isPending}>
             {emailSignIn.isPending && (
-              <Spinner className="mr-2 h-4 w-4 " aria-label="Загрузка выхода" />
+              <Spinner
+                className="mr-2 h-4 w-4 animate-spin"
+                aria-label="Вход"
+              />
             )}
             Войти через Email
           </Button>
+          {emailSignIn.isSuccess && (
+            <a
+              className="text-sm text-muted-foreground text-underline"
+              href={generateTestLink({
+                callbackUrl: emailSignIn.callbackUrl ?? "",
+                token: testToken,
+                email: form.getValues("email"),
+              })}
+            >
+              Упрощённый тестовый вход
+            </a>
+          )}
         </div>
       </form>
     </Form>
