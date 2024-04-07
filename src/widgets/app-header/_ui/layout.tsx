@@ -12,11 +12,13 @@ export function Layout({
   nav,
   profile,
   actions,
+  admin,
 }: {
   logo?: React.ReactNode;
   nav?: React.ReactNode;
   profile?: React.ReactNode;
   actions?: React.ReactNode;
+  admin?: React.ReactNode;
 }) {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -39,6 +41,7 @@ export function Layout({
         <div className="items-center flex-1 flex">
           <div className="hidden md:flex">{nav}</div>
           <div className="flex flex-1 items-center justify-end space-x-3 ">
+            {admin}
             {actions}
             {profile}
           </div>
