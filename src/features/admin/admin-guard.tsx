@@ -12,6 +12,8 @@ export default function AdminGuard({
 }) {
   const session = useAppSession();
 
+  const isLoading =
+    session.status === "loading" || session.status === "unauthenticated";
   const isUnauthenticated = session.status === "unauthenticated";
   const isAdmin = session.data?.user.role === "ADMIN";
   useEffect(() => {
@@ -20,13 +22,10 @@ export default function AdminGuard({
     }
   }, [isUnauthenticated]);
   useEffect(() => {
-    if (session.status === "unauthenticated" && !isAdmin) {
+    if (!isLoading && !isAdmin) {
       signOut({ callbackUrl: "/" });
     }
-  }, [isAdmin]);
-
-  const isLoading =
-    session.status === "loading" || session.status === "unauthenticated";
+  }, [isAdmin, isLoading]);
 
   return (
     <>
