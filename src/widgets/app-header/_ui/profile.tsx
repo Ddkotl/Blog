@@ -47,6 +47,9 @@ export function Profile() {
           <p className="text-xs text-muted-foreground overflow-hidden text-ellipsis">
             {user ? getProfileDisplayName(user) : undefined}
           </p>
+          <p className="text-xs text-muted-foreground overflow-hidden text-ellipsis">
+            {user ? user.role : undefined}
+          </p>
         </DropdownMenuLabel>
         <DropdownMenuGroup></DropdownMenuGroup>
         <DropdownMenuSeparator />
