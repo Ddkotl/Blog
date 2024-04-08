@@ -20,7 +20,7 @@ export default function AdminGuard({
     }
   }, [isUnauthenticated]);
   useEffect(() => {
-    if (!isAdmin) {
+    if (session.status === "unauthenticated" && !isAdmin) {
       signOut({ callbackUrl: "/" });
     }
   }, [isAdmin]);
