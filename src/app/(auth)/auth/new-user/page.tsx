@@ -3,6 +3,12 @@ import { UpdateProfileForm } from "@/features/update-profile/update-profile-form
 import { Separator } from "@/shared/ui/separator";
 import { redirect } from "next/navigation";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Новый пользователь | YourLife-Online",
+};
+
 export default async function NewUserPage({
   searchParams,
 }: {

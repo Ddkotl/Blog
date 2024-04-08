@@ -13,7 +13,7 @@ export default async function Layout({
       <AdminGuard>
         <ul className="flex gap-10">
           <li>
-            <Link href="/admin/dashbord">dashbord</Link>
+            <Link href="/admin">dashbord</Link>
           </li>
           <li>
             <Link href="/admin/post">post</Link>

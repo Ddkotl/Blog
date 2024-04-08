@@ -1,5 +1,10 @@
 import { UpdateProfileForm } from "@/features/update-profile/update-profile-form";
 import { Separator } from "@/shared/ui/separator";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Профиль | YourLife-Online",
+};
 
 export default function ProfilePage({ params }: { params: { id: string } }) {
   return (

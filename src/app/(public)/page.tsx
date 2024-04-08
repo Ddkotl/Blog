@@ -1,6 +1,11 @@
 import { CreatePostForm } from "@/features/posts-list/pub/create-post-form";
 import { PostsList } from "@/features/posts-list/pub/posts-list";
 import { Slider } from "@/widgets/slider";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Главная | YourLife-Online",
+};
 
 export default async function Home() {
   return (

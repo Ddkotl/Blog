@@ -1,7 +1,11 @@
 import { SignInForm } from "@/features/auth/sign-in-form.server";
 import { Card, CardContent, CardHeader } from "@/shared/ui/card";
+import { Metadata } from "next";
 import Link from "next/link";
 
+export const metadata: Metadata = {
+  title: "Вход | YourLife-Online",
+};
 export default function AuthenticationPage() {
   return (
     <>
