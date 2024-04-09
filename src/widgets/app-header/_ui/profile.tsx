@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
 import { Skeleton } from "@/shared/ui/skeleton";
-import { LogOut, User } from "lucide-react";
+import { LogOut, ShieldPlus, User } from "lucide-react";
 import Link from "next/link";
 
 export function Profile() {
@@ -30,7 +30,7 @@ export function Profile() {
   }
 
   const user = session?.data?.user;
-
+  const isAdmin = session?.data?.user.role === "ADMIN";
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -67,6 +67,16 @@ export function Profile() {
             <LogOut className="mr-2 h-4 w-4" />
             <span>Выход</span>
           </DropdownMenuItem>
+          {isAdmin ? (
+            <DropdownMenuItem asChild disabled={!isAdmin}>
+              <Link href="/admin">
+                <ShieldPlus className="mr-2 h-4 w-4" />
+                <span>Админкa</span>
+              </Link>
+            </DropdownMenuItem>
+          ) : (
+            ""
+          )}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
