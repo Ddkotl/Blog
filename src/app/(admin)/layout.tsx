@@ -1,6 +1,11 @@
 import AdminGuard from "@/features/admin/admin-guard";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from "@/shared/ui/navigation-menu";
 import { AppHeader } from "@/widgets/app-header/app-header";
-import Link from "next/link";
 
 export default async function Layout({
   children,
@@ -11,20 +16,24 @@ export default async function Layout({
     <>
       <AppHeader variant="admin" />
       <AdminGuard>
-        <ul className="flex gap-10">
-          <li>
-            <Link href="/admin">dashbord</Link>
-          </li>
-          <li>
-            <Link href="/admin/post">post</Link>
-          </li>
-          <li>
-            <Link href="/admin/user">user</Link>
-          </li>
-          <li>
-            <Link href="/admin/statistics">statistics</Link>
-          </li>
-        </ul>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/admin">dashbord</NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/admin/post">post</NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/admin/user">user</NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/admin/statistics">
+                statistics
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
         {children}
       </AdminGuard>
     </>
