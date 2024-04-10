@@ -1,6 +1,6 @@
-import AdminGuard from "@/features/admin/admin-guard"
-import { AppHeader } from "@/widgets/app-header/app-header"
-import Link from "next/link"
+import AdminGuard from "@/features/admin/admin-guard";
+import { AppHeader } from "@/widgets/app-header/app-header";
+import Link from "next/link";
 
 export default async function Layout({
   children,

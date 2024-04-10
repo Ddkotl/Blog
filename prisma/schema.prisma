@@ -11,9 +11,16 @@ datasource db {
 }
 
 model Post {
-  id          String @id @default(cuid())
+  id          String   @id @default(cuid())
   name        String
   description String
+  content     String?
+  published   Boolean  @default(false)
+  author      User?    @relation(fields: [authorId], references: [id])
+  authorId    String?
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Account {
@@ -52,6 +59,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Post          Post[]
 }
 
 model VerificationToken {
