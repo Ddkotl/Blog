@@ -18,11 +18,14 @@ import {
 import { AppHeader } from "@/widgets/app-header/app-header";
 import {
   BookCheck,
+  BookKey,
   Home,
   LineChart,
+  MessageCircle,
   PanelLeft,
   Search,
   Settings,
+  Tag,
   Users2,
 } from "lucide-react";
 import Link from "next/link";
@@ -67,6 +70,30 @@ export default async function Layout({
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Link
+                      href="/admin/category"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                    >
+                      <BookKey className="h-5 w-5" />
+                      <span className="sr-only">Категории</span>
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">Категории</TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href="/admin/tag"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                    >
+                      <Tag className="h-5 w-5" />
+                      <span className="sr-only">Тэги</span>
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">Тэги</TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
                       href="/admin/user"
                       className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                     >
@@ -75,6 +102,18 @@ export default async function Layout({
                     </Link>
                   </TooltipTrigger>
                   <TooltipContent side="right">Пользователи</TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href="/admin/comment"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                    >
+                      <MessageCircle className="h-5 w-5" />
+                      <span className="sr-only">Комментарии</span>
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">Комментарии</TooltipContent>
                 </Tooltip>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -134,11 +173,32 @@ export default async function Layout({
                       Статьи
                     </Link>
                     <Link
+                      href="/admin/category"
+                      className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                    >
+                      <BookKey className="h-5 w-5" />
+                      Категории
+                    </Link>
+                    <Link
+                      href="/admin/tag"
+                      className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                    >
+                      <Tag className="h-5 w-5" />
+                      Тэги
+                    </Link>
+                    <Link
                       href="/admin/user"
                       className="flex items-center gap-4 px-2.5 text-foreground"
                     >
                       <Users2 className="h-5 w-5" />
                       Пользователи
+                    </Link>
+                    <Link
+                      href="/admin/comment"
+                      className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                    >
+                      <MessageCircle className="h-5 w-5" />
+                      Комментарии
                     </Link>
 
                     <Link
