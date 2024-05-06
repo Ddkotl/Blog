@@ -1,5 +1,5 @@
 import { CategoriesList } from "@/features/category-list/pub/category-list";
-import { Button } from "@/shared/ui/button";
+import { CreateCategoryForm } from "@/features/category-list/pub/create-category-form";
 import {
   Card,
   CardContent,
@@ -15,9 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
-import { PlusCircle } from "lucide-react";
 import { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Категории | YourLife-Online",
@@ -26,18 +24,12 @@ export default function AdminCategory() {
   return (
     <>
       {" "}
-      <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-        <div className="flex items-center">
-          <div className="ml-auto flex items-center gap-2">
-            <Button size="sm" className="h-8 gap-1" asChild>
-              <Link href="/admin/category/create">
-                <PlusCircle className="h-3.5 w-3.5" />
-                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  Добавить категорию
-                </span>
-              </Link>
-            </Button>
-          </div>
+      <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-4">
+        <div className="ml-auto flex items-center ">
+          <CreateCategoryForm
+            className="max-w-[425px] "
+            revalidatePagePath="/admin/category"
+          />
         </div>
 
         <Card x-chunk="dashboard-06-chunk-0">
@@ -49,14 +41,19 @@ export default function AdminCategory() {
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead>Картинка</TableHead>
                   <TableHead>Название</TableHead>
-                  <TableHead>
-                    <span className="sr-only">Действия</span>
+                  <TableHead className="hidden md:table-cell">
+                    Дата создания
                   </TableHead>
+                  <TableHead className="hidden md:table-cell">
+                    Дата обновления
+                  </TableHead>
+                  <TableHead>Действия</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <CategoriesList revalidatePagePath="/" />
+                <CategoriesList revalidatePagePath="/admin/category" />
               </TableBody>
             </Table>
           </CardContent>

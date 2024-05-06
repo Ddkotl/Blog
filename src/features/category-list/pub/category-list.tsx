@@ -15,7 +15,7 @@ export async function CategoriesList({
     revalidatePath(revalidatePagePath);
   };
   return (
-    <div className="flex flex-col gap-3">
+    <>
       {categoriesList.map((category) => (
         <CategoryItem
           key={category.id}
@@ -23,6 +23,6 @@ export async function CategoriesList({
           onDelete={handleDeleteAction.bind(null, category.id)}
         />
       ))}
-    </div>
+    </>
   );
 }

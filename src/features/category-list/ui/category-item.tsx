@@ -1,14 +1,18 @@
 "use client";
-import { Button } from "@/shared/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/shared/ui/dropdown-menu";
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/shared/ui/alert-dialog";
+import { Button } from "@/shared/ui/button";
 import { TableCell, TableRow } from "@/shared/ui/table";
-import { MoreHorizontal } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import { useTransition } from "react";
 
 export function CategoryItem({
@@ -26,23 +30,42 @@ export function CategoryItem({
   };
   return (
     <TableRow>
+      <TableCell className="font-medium">картинка</TableCell>
       <TableCell className="font-medium">{category.name}</TableCell>
+      <TableCell className="font-medium hidden md:table-cell">дата</TableCell>
+      <TableCell className="font-medium hidden md:table-cell">дата</TableCell>
       <TableCell>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button aria-haspopup="true" size="icon" variant="ghost">
-              <MoreHorizontal className="h-4 w-4" />
-              <span className="sr-only">Действия</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Действия</DropdownMenuLabel>
-            <DropdownMenuItem>Редактировать</DropdownMenuItem>
-            <DropdownMenuItem disabled={isLoadingDelete} onClick={handleDelete}>
-              Удалить
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div>
+          <Button aria-haspopup="true" size="icon" variant="ghost">
+            <Pencil className="h-4 w-4" />
+          </Button>
+
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button aria-haspopup="true" size="icon" variant="ghost">
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Ты абсолютно уверен?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Это действе необратимо. Данный элемент будет удален без
+                  возможности востановления.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Отмена</AlertDialogCancel>
+                <AlertDialogAction
+                  disabled={isLoadingDelete}
+                  onClick={handleDelete}
+                >
+                  Удалить
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
       </TableCell>
     </TableRow>
   );

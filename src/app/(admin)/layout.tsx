@@ -9,12 +9,7 @@ import {
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/shared/ui/sheet";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/shared/ui/tooltip";
+import { AdminSidebarPK } from "@/widgets/admin/admin-nav/admin-sidebar-pk";
 import { AppHeader } from "@/widgets/app-header/app-header";
 import {
   BookCheck,
@@ -40,115 +35,9 @@ export default async function Layout({
       <AppHeader variant="admin" />
       <AdminGuard>
         <div className="flex min-h-screen w-full flex-col bg-muted/40">
-          <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
-            <nav className="flex flex-col items-center gap-4 px-2 sm:py-5 mt-14">
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="/admin"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                    >
-                      <Home className="h-5 w-5" />
-                      <span className="sr-only">Главная админки</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Главная админки</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="/admin/post"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                    >
-                      <BookCheck className="h-5 w-5" />
-                      <span className="sr-only">Статьи</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Статьи</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="/admin/category"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                    >
-                      <BookKey className="h-5 w-5" />
-                      <span className="sr-only">Категории</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Категории</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="/admin/tag"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                    >
-                      <Tag className="h-5 w-5" />
-                      <span className="sr-only">Тэги</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Тэги</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="/admin/user"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                    >
-                      <Users2 className="h-5 w-5" />
-                      <span className="sr-only">Пользователи</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Пользователи</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="/admin/comment"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                    >
-                      <MessageCircle className="h-5 w-5" />
-                      <span className="sr-only">Комментарии</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Комментарии</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="/admin/statistics"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                    >
-                      <LineChart className="h-5 w-5" />
-                      <span className="sr-only">Статистика</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Статистика</TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </nav>
-            <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-              <TooltipProvider>
-                {" "}
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="#"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                    >
-                      <Settings className="h-5 w-5" />
-                      <span className="sr-only">Настройки</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Настройки</TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </nav>
-          </aside>
+          <AdminSidebarPK />
           <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-            <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+            <div className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
               <Sheet>
                 <SheetTrigger asChild>
                   <Button size="icon" variant="outline" className="sm:hidden">
@@ -174,14 +63,14 @@ export default async function Layout({
                     </Link>
                     <Link
                       href="/admin/category"
-                      className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                      className="flex items-center gap-4 px-2.5  hover:text-foreground"
                     >
                       <BookKey className="h-5 w-5" />
                       Категории
                     </Link>
                     <Link
                       href="/admin/tag"
-                      className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                      className="flex items-center gap-4 px-2.5  hover:text-foreground"
                     >
                       <Tag className="h-5 w-5" />
                       Тэги
@@ -241,7 +130,7 @@ export default async function Layout({
                   className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
                 />
               </div>
-            </header>
+            </div>
             {children}
           </div>
         </div>
