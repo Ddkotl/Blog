@@ -1,10 +1,11 @@
-import { ROLES, SessionEntity, UserId } from "@/entities/user/user";
+import { ROLES, SessionEntity } from "@/entities/user/user";
 
-export const createCategoryAbility = (session: SessionEntity) => ({
-  canCreateCategory: (userId: UserId) =>
-    session.user.id === userId || session.user.role === ROLES.ADMIN,
-});
-export const updateCategoryAbility = (session: SessionEntity) => ({
-  canUpdateCategory: (userId: UserId) =>
-    session.user.id === userId || session.user.role === ROLES.ADMIN,
+type CategoryAbilities = {
+  canCreateCategory: () => boolean;
+  canUpdateCategory: () => boolean;
+};
+
+export const categoryAbility = (session: SessionEntity): CategoryAbilities => ({
+  canCreateCategory: () => session.user.role === ROLES.ADMIN,
+  canUpdateCategory: () => session.user.role === ROLES.ADMIN,
 });

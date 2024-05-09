@@ -1,23 +1,23 @@
 export type CategoryId = string;
+export type CategoryName = string;
 
 export type CategoryEntity = {
   id: CategoryId;
-  name: string;
+  name: CategoryName;
   description: string;
   image?: string | null;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
-export type NewCategory = {
-  name: string;
+export type CreateCategory = {
+  name: CategoryName;
   description: string;
   image?: string | null;
 };
 
 export type UpdateCategory = {
-  id: CategoryId;
-  name: string;
+  name: CategoryName;
   description: string;
   image?: string | null;
 };
