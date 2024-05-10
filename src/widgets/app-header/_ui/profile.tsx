@@ -68,7 +68,7 @@ export function Profile() {
             <span>Выход</span>
           </DropdownMenuItem>
           {isAdmin ? (
-            <DropdownMenuItem asChild disabled={!isAdmin}>
+            <DropdownMenuItem asChild>
               <Link href="/admin">
                 <ShieldPlus className="mr-2 h-4 w-4" />
                 <span>Админкa</span>

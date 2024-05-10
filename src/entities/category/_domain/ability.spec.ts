@@ -1,26 +1,42 @@
 import { SessionEntity } from "@/entities/user/user";
 import { categoryAbility } from "./ability";
 
-describe("CategoryAbility", () => {
-  it("should allow creation and update of category for admin", () => {
-    const adminSession: SessionEntity = {
-      user: { id: "admin_id", email: "admin@example.com", role: "ADMIN" },
+describe("categoryAbility", () => {
+  it("should allow creating, updating, and deleting categories for admin users", () => {
+    const session: SessionEntity = {
+      user: {
+        id: "1",
+        email: "admin@example.com",
+        role: "ADMIN",
+        name: "Admin",
+        image: null,
+      },
       expires: "2024-05-31T12:00:00Z",
     };
-    const abilities = categoryAbility(adminSession);
+
+    const abilities = categoryAbility(session);
 
     expect(abilities.canCreateCategory()).toBe(true);
     expect(abilities.canUpdateCategory()).toBe(true);
+    expect(abilities.canDeleteCategory()).toBe(true);
   });
 
-  it("should disallow creation and update of category for non-admin", () => {
-    const userSession: SessionEntity = {
-      user: { id: "user_id", email: "user@example.com", role: "USER" },
-      expires: "2025-05-31T12:00:00Z",
+  it("should disallow creating, updating, and deleting categories for non-admin users", () => {
+    const session: SessionEntity = {
+      user: {
+        id: "2",
+        email: "user@example.com",
+        role: "USER",
+        name: "User",
+        image: null,
+      },
+      expires: "2024-05-31T12:00:00Z",
     };
-    const abilities = categoryAbility(userSession);
+
+    const abilities = categoryAbility(session);
 
     expect(abilities.canCreateCategory()).toBe(false);
     expect(abilities.canUpdateCategory()).toBe(false);
+    expect(abilities.canDeleteCategory()).toBe(false);
   });
 });

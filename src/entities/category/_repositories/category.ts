@@ -63,6 +63,15 @@ export class CategoryRepository {
       throw error;
     }
   }
+
+  async deleteCategory(categoryId: CategoryId) {
+    try {
+      return await dbClient.category.delete({ where: { id: categoryId } });
+    } catch (error) {
+      console.error("Ошибка при удалении категории:", error);
+      throw error;
+    }
+  }
 }
 
 export const categoryRepository = new CategoryRepository();

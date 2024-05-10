@@ -21,3 +21,9 @@ export type UpdateCategory = {
   description: string;
   image?: string | null;
 };
+
+export type CategoryAction = {
+  name: CategoryName;
+  description: string;
+  image?: string | null;
+};

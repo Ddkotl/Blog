@@ -1,7 +1,7 @@
-import { CategoryEntity } from "../_domain/type";
+import { CategoryName } from "../_domain/type";
 
-export const getCategoryLetters = (category: CategoryEntity) => {
-  const displayName = category.name;
+export const getCategoryLetters = (categoryName: CategoryName) => {
+  const displayName = categoryName;
 
   const [a, b] = displayName.split("@")[0].split(/\.|\s|-|_/);
 

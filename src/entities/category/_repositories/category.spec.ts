@@ -15,6 +15,7 @@ jest.mock("@/shared/lib/db", () => ({
       findUniqueOrThrow: jest.fn(),
       create: jest.fn(),
       update: jest.fn(),
+      delete: jest.fn(),
     },
   },
 }));
@@ -159,6 +160,20 @@ describe("CategoryRepository", () => {
     expect(dbClient.category.update).toHaveBeenCalledWith({
       where: { id: categoryId },
       data: updateData,
+    });
+  });
+  it("deleteCategory should delete an existing category", async () => {
+    const categoryId: CategoryId = "1";
+    (dbClient.category.delete as jest.Mock).mockResolvedValueOnce({
+      id: categoryId,
+    });
+
+    const categoryRepository = new CategoryRepository();
+    const result = await categoryRepository.deleteCategory(categoryId);
+
+    expect(result).toEqual({ id: categoryId });
+    expect(dbClient.category.delete).toHaveBeenCalledWith({
+      where: { id: categoryId },
     });
   });
 });

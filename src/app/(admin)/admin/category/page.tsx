@@ -1,5 +1,5 @@
 import { CategoriesList } from "@/features/category-list/pub/category-list";
-import { CreateCategoryForm } from "@/features/category-list/pub/create-category-form";
+import { Button } from "@/shared/ui/button";
 import {
   Card,
   CardContent,
@@ -15,7 +15,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/shared/ui/table";
+import { PlusCircle } from "lucide-react";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Категории | YourLife-Online",
@@ -26,10 +28,14 @@ export default function AdminCategory() {
       {" "}
       <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-4">
         <div className="ml-auto flex items-center ">
-          <CreateCategoryForm
-            className="max-w-[425px] "
-            revalidatePagePath="/admin/category"
-          />
+          <Link href="/admin/category/create">
+            <Button size="sm" className="h-8 gap-2">
+              <PlusCircle className="h-5 w-5" />
+              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                Добавить категорию
+              </span>
+            </Button>
+          </Link>
         </div>
 
         <Card x-chunk="dashboard-06-chunk-0">

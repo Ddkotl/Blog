@@ -1,13 +1,13 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import { cn } from "@/shared/ui/utils";
-import { CategoryEntity } from "../_domain/type";
+import { CategoryAction } from "../_domain/type";
 import { getCategoryLetters } from "../_vm/get-categoty-letters";
 
 export const CategoryImage = ({
   category,
   className,
 }: {
-  category?: CategoryEntity;
+  category?: CategoryAction;
   className?: string;
 }) => {
   if (!category) {
@@ -20,7 +20,7 @@ export const CategoryImage = ({
         src={category.image ?? ""}
         className="object-cover rounded-sm"
       />
-      <AvatarFallback>{getCategoryLetters(category)}</AvatarFallback>
+      <AvatarFallback>{getCategoryLetters(category.name)}</AvatarFallback>
     </Avatar>
   );
 };
