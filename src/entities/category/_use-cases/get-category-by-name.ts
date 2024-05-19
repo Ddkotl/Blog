@@ -2,7 +2,7 @@ import { CategoryEntity, CategoryName } from "../_domain/type";
 import { categoryRepository } from "../_repositories/category";
 
 export class GetCategoryByNameCase {
-  async exec(categoryName: CategoryName): Promise<CategoryEntity> {
+  async exec(categoryName: CategoryName): Promise<CategoryEntity | null> {
     return await categoryRepository.getCategoryByName(categoryName);
   }
 }
