@@ -15,9 +15,11 @@ export class CategoryRepository {
       throw error;
     }
   }
-  async getCategoryById(categoryId: CategoryId): Promise<CategoryEntity[]> {
+  async getCategoryById(
+    categoryId: CategoryId,
+  ): Promise<CategoryEntity | null> {
     try {
-      return await dbClient.category.findMany({
+      return await dbClient.category.findUnique({
         where: { id: categoryId },
       });
     } catch (error) {
@@ -26,9 +28,9 @@ export class CategoryRepository {
     }
   }
 
-  async getCategoryByName(name: string): Promise<CategoryEntity[]> {
+  async getCategoryByName(name: string): Promise<CategoryEntity | null> {
     try {
-      return await dbClient.category.findMany({ where: { name: name } });
+      return await dbClient.category.findUnique({ where: { name: name } });
     } catch (error) {
       console.error("Ошибка при поиске категории:", error);
       throw error;

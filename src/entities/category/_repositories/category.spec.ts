@@ -12,7 +12,7 @@ jest.mock("@/shared/lib/db", () => ({
   dbClient: {
     category: {
       findMany: jest.fn(),
-      findUniqueOrThrow: jest.fn(),
+      findUnique: jest.fn(),
       create: jest.fn(),
       update: jest.fn(),
       delete: jest.fn(),
@@ -68,15 +68,13 @@ describe("CategoryRepository", () => {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    (dbClient.category.findUniqueOrThrow as jest.Mock).mockResolvedValueOnce(
-      category,
-    );
+    (dbClient.category.findUnique as jest.Mock).mockResolvedValueOnce(category);
 
     const result = await categoryRepository.getCategoryById(categoryId);
 
     expect(result).toEqual(category);
-    expect(dbClient.category.findUniqueOrThrow).toHaveBeenCalledTimes(1);
-    expect(dbClient.category.findUniqueOrThrow).toHaveBeenCalledWith({
+    expect(dbClient.category.findUnique).toHaveBeenCalledTimes(1);
+    expect(dbClient.category.findUnique).toHaveBeenCalledWith({
       where: { id: categoryId },
     });
   });
@@ -91,15 +89,13 @@ describe("CategoryRepository", () => {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    (dbClient.category.findUniqueOrThrow as jest.Mock).mockResolvedValueOnce(
-      category,
-    );
+    (dbClient.category.findUnique as jest.Mock).mockResolvedValueOnce(category);
 
     const result = await categoryRepository.getCategoryByName(categoryName);
 
     expect(result).toEqual(category);
-    expect(dbClient.category.findUniqueOrThrow).toHaveBeenCalledTimes(1);
-    expect(dbClient.category.findUniqueOrThrow).toHaveBeenCalledWith({
+    expect(dbClient.category.findUnique).toHaveBeenCalledTimes(1);
+    expect(dbClient.category.findUnique).toHaveBeenCalledWith({
       where: { name: categoryName },
     });
   });
