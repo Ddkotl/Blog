@@ -1,3 +1,4 @@
+import { CategoriesList } from "@/features/admin/categories/_ui/category-list";
 import { Button } from "@/shared/ui/button";
 import {
   Card,
@@ -58,7 +59,7 @@ export default function AdminCategory() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {/* <CategoriesList revalidatePagePath="/admin/category" /> */}
+                <CategoriesList revalidatePagePath="/admin/category" />
               </TableBody>
             </Table>
           </CardContent>
