@@ -15,9 +15,7 @@ export class CategoryRepository {
       throw error;
     }
   }
-  async getCategoryById(
-    categoryId: CategoryId,
-  ): Promise<CategoryEntity | null> {
+  async getCategoryById(categoryId: CategoryId) {
     try {
       return await dbClient.category.findUnique({
         where: { id: categoryId },
@@ -28,7 +26,7 @@ export class CategoryRepository {
     }
   }
 
-  async getCategoryByName(name: string): Promise<CategoryEntity | null> {
+  async getCategoryByName(name: string) {
     try {
       return await dbClient.category.findUnique({ where: { name: name } });
     } catch (error) {
