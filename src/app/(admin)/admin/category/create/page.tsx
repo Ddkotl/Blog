@@ -1,4 +1,3 @@
-import { CreateCategoryForm } from "@/features/admin/categories/_ui/create-category-form";
 import {
   Card,
   CardContent,
@@ -6,8 +5,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card";
-import { Metadata } from "next";
+} from "@/shared/ui/card"
+import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "создание категории | YourLife-Online",
@@ -25,7 +24,7 @@ export default function AdminCreateCategory() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <CreateCategoryForm />
+            {/* <CreateCategoryForm /> */}
           </CardContent>
           <CardFooter>
             <div className="text-xs text-muted-foreground">назад</div>

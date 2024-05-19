@@ -1,17 +1,18 @@
+import { categoryRepository } from "@/entities/category/_repositories/category";
+import { getAllCategoriesCase } from "@/entities/category/category.server";
 import { revalidatePath } from "next/cache";
-import { categoryRepository } from "../category.repozitory";
-import { CategoryItem } from "../ui/category-item";
+import { CategoryItem } from "./category-item";
 
 export async function CategoriesList({
   revalidatePagePath,
 }: {
   revalidatePagePath: string;
 }) {
-  const categoriesList = await categoryRepository.getAll();
+  const categoriesList = await getAllCategoriesCase.exec();
 
   const handleDeleteAction = async (categoryId: string) => {
     "use server";
-    await categoryRepository.delete({ id: categoryId });
+    await categoryRepository.deleteCategory(categoryId);
     revalidatePath(revalidatePagePath);
   };
   return (

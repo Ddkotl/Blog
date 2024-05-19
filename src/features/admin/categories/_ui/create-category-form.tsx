@@ -55,7 +55,6 @@ export function CreateCategoryForm({
         <FormField
           control={form.control}
           name="name"
-          disabled
           render={({ field }) => (
             <FormItem>
               <FormLabel>Название категории</FormLabel>

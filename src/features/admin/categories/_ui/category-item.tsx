@@ -1,4 +1,5 @@
 "use client";
+import { CategoryEntity } from '@/entities/category/category'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,17 +10,17 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/shared/ui/alert-dialog";
-import { Button } from "@/shared/ui/button";
-import { TableCell, TableRow } from "@/shared/ui/table";
-import { Pencil, Trash2 } from "lucide-react";
-import { useTransition } from "react";
+} from "@/shared/ui/alert-dialog"
+import { Button } from "@/shared/ui/button"
+import { TableCell, TableRow } from "@/shared/ui/table"
+import { Pencil, Trash2 } from "lucide-react"
+import { useTransition } from "react"
 
 export function CategoryItem({
   category,
   onDelete,
 }: {
-  category: CategoryListElement;
+  category: CategoryEntity;
   onDelete: () => Promise<void>;
 }) {
   const [isLoadingDelete, startDeleteTransition] = useTransition();
