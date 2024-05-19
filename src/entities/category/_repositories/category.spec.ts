@@ -112,7 +112,7 @@ describe("CategoryRepository", () => {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    (dbClient.category.findUniqueOrThrow as jest.Mock).mockResolvedValueOnce(
+    (dbClient.category.findUnique as jest.Mock).mockResolvedValueOnce(
       undefined,
     ); // Категория не существует
     (dbClient.category.create as jest.Mock).mockResolvedValueOnce(
@@ -122,7 +122,7 @@ describe("CategoryRepository", () => {
     const result = await categoryRepository.createCategory(newCategory);
 
     expect(result).toEqual(createdCategory);
-    expect(dbClient.category.findUniqueOrThrow).toHaveBeenCalledTimes(1);
+    expect(dbClient.category.findUnique).toHaveBeenCalledTimes(1);
     expect(dbClient.category.create).toHaveBeenCalledTimes(1);
     expect(dbClient.category.create).toHaveBeenCalledWith({
       data: newCategory,
