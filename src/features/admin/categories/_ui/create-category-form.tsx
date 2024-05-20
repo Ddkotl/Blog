@@ -22,12 +22,10 @@ import { ImageField } from "./image-field";
 type CategoryFormValues = z.infer<typeof categoryFormSchema>;
 
 export function CreateCategoryForm({
-  onSuccess,
   submitText = "Сохранить",
   revalidatePagePath,
   callbackUrl,
 }: {
-  onSuccess?: () => void;
   submitText?: string;
   revalidatePagePath: string;
   callbackUrl?: string;
@@ -36,11 +34,7 @@ export function CreateCategoryForm({
     resolver: zodResolver(categoryFormSchema),
   });
   const router = useRouter();
-  const handleSuccess = () => {
-    if (callbackUrl) {
-      router.push(callbackUrl);
-    }
-  };
+
   const handleSubmit = form.handleSubmit(async (data) => {
     await createCategoryAction(
       {
@@ -48,8 +42,8 @@ export function CreateCategoryForm({
       },
       revalidatePagePath,
     );
-    onSuccess: {
-      handleSuccess;
+    if (callbackUrl) {
+      router.push(callbackUrl);
     }
   });
 
