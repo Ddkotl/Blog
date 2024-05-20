@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
+import { useRouter } from "next/navigation";
 import { createCategoryAction } from "../_actions/create-category";
 import { ImageField } from "./image-field";
 
@@ -23,20 +24,33 @@ type CategoryFormValues = z.infer<typeof categoryFormSchema>;
 export function CreateCategoryForm({
   onSuccess,
   submitText = "Сохранить",
+  revalidatePagePath,
+  callbackUrl,
 }: {
   onSuccess?: () => void;
   submitText?: string;
+  revalidatePagePath: string;
+  callbackUrl?: string;
 }) {
   const form = useForm<CategoryFormValues>({
     resolver: zodResolver(categoryFormSchema),
   });
-
+  const router = useRouter();
+  const handleSuccess = () => {
+    if (callbackUrl) {
+      router.push(callbackUrl);
+    }
+  };
   const handleSubmit = form.handleSubmit(async (data) => {
-    await createCategoryAction({
-      data: data,
-    });
-
-    onSuccess?.();
+    await createCategoryAction(
+      {
+        data: data,
+      },
+      revalidatePagePath,
+    );
+    onSuccess: {
+      handleSuccess;
+    }
   });
 
   return (
