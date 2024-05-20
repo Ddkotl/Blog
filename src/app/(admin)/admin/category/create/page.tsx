@@ -25,7 +25,10 @@ export default function AdminCreateCategory() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <CreateCategoryForm />
+            <CreateCategoryForm
+              callbackUrl="/admin/category"
+              revalidatePagePath="/admin/category"
+            />
           </CardContent>
           <CardFooter>
             <div className="text-xs text-muted-foreground">назад</div>
