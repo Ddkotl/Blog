@@ -4,10 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-import {
-  categoryFormSchema,
-  CreateCategory,
-} from "@/entities/category/category";
+import { categoryFormSchema } from "@/entities/category/category";
 import { Button } from "@/shared/ui/button";
 import {
   Form,
@@ -23,12 +20,6 @@ import { ImageField } from "./image-field";
 
 type CategoryFormValues = z.infer<typeof categoryFormSchema>;
 
-const getDefaultValues = (category: CreateCategory) => ({
-  name: category.name,
-  description: category.description,
-  image: category.image ?? undefined,
-});
-
 export function CreateCategoryForm({
   onSuccess,
   submitText = "Сохранить",
@@ -41,11 +32,10 @@ export function CreateCategoryForm({
   });
 
   const handleSubmit = form.handleSubmit(async (data) => {
-    const newCategory = await createCategoryAction({
+    await createCategoryAction({
       data: data,
     });
 
-    form.reset(getDefaultValues(newCategory.category));
     onSuccess?.();
   });
 

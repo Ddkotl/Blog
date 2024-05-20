@@ -9,10 +9,6 @@ const propsSchema = z.object({
   data: categorySchema,
 });
 
-const resultSchema = z.object({
-  category: categorySchema,
-});
-
 export const createCategoryAction = async (
   props: z.infer<typeof propsSchema>,
 ) => {
@@ -20,12 +16,8 @@ export const createCategoryAction = async (
 
   const session = await getAppSessionStrictServer();
 
-  const category = await createCategoryUseCase.exec({
+  await createCategoryUseCase.exec({
     session,
     data,
-  });
-
-  return resultSchema.parseAsync({
-    category: category,
   });
 };
