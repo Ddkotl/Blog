@@ -1,5 +1,5 @@
 "use client";
-import { CategoryEntity } from '@/entities/category/category'
+import { CategoryEntity, CategoryImage } from "@/entities/category/category";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,11 +10,11 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/shared/ui/alert-dialog"
-import { Button } from "@/shared/ui/button"
-import { TableCell, TableRow } from "@/shared/ui/table"
-import { Pencil, Trash2 } from "lucide-react"
-import { useTransition } from "react"
+} from "@/shared/ui/alert-dialog";
+import { Button } from "@/shared/ui/button";
+import { TableCell, TableRow } from "@/shared/ui/table";
+import { Pencil, Trash2 } from "lucide-react";
+import { useTransition } from "react";
 
 export function CategoryItem({
   category,
@@ -31,7 +31,9 @@ export function CategoryItem({
   };
   return (
     <TableRow>
-      <TableCell className="font-medium">картинка</TableCell>
+      <TableCell className="font-medium">
+        <CategoryImage category={category} className="w-8 h-8" />
+      </TableCell>
       <TableCell className="font-medium">{category.name}</TableCell>
       <TableCell className="font-medium hidden md:table-cell">дата</TableCell>
       <TableCell className="font-medium hidden md:table-cell">дата</TableCell>
